@@ -1,0 +1,15 @@
+DATA WE NEED:
+-TOURS
+-USERS
+-LOCATIONS
+-REVIEWS 
+-BOOKINGS
+
+RELATIONSHIPS:
+
+1) USERS --> REVIEWS - 1:MANY, Using Parent referencing
+2) TOURS --> REVIEWS - 1:MANY, Using Parent referencing
+3) TOURS --> LOCATIONS - FEW:FEW, Using Embedding (locations wont be needed independently)
+4) TOURS --> USERS - FEW:FEW, Using child referencing (Users and tours both needed independently)
+5) TOURS --> BOOKINGS - 1:MANY, Parent referencing
+6) USERS --> BOOKINGS - 1:MANY, Parent referencing

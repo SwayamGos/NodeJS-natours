@@ -1,0 +1,74 @@
+DATA MODELLING: Modelling unsstructured real-world data into a structured and logical db.
+
+                        TYPES OF RELATIONSHIP BETWEEN DATA-
+
+1) 1:1 - When 1 field can only have 1 value. 
+         eg: 1 movie can only have 1 name.
+
+2) 1:MANY - There are 3 types.
+            a)1:FEW - eg: movie and awards.(A movie can only win a few awards)
+            b)1:MANY - eg: movie and reviews.(A movie can have hundreds of reviews)
+            c)1:TON - eg: app and no. of logins(An app can have millions of logins)
+
+3) MANY: MANY - eg: movies and actors.(A movie can have many actors, an actor can be in many movies)
+
+     ----------------------------------------------------------------------------
+
+                            REFERENCING VS EMBEDDING
+
+REFERENCED/NORMALIZED DATA:
+ Let's say you have a database of movies an actors. A normalized database has separate documents for movies and actors. We use actor ID references in the movie document and vice versa to communicate between documents. Movie referencing actor would be Parent referencing. All relational databases have normalised data.
+
++) Easier to query each document on it's own.
+-)Needs multiple queries when everything is needed as a whole.
+
+EMBEDDED/DENORMALIZED DATA:
+Here, the actors will be right inside the movie document. This is only possible in Non-relational databases.
+
++) Denormalized data needs fewer queries since everything is obtained in 1 query.
+-) Impossible to obtain only embedded data.(actors here)
+
+     ---------------------------------------------------------------------------
+
+                         WHEN TO EMBED AND WHEN TO REFERENCE??????
+
+TAKE A DECISION BASED ON FOLLOWING CRITERIA:
+
+1)RELATIONSHIP TYPE(How data are related to each other):
+
+EMBED IF- 1:FEW OR 1:MANY
+REFERENCE IF- 1:MANY OR 1:TON OR MANY:MANY
+
+2)DATA ACCESS PATTERNS(How often data is read and written):
+
+EMBED IF- DATA IS MOSTLY READ
+          DATA DOES NOT CHANGE QUICKLY(eg: movies + photos)
+REFERENCE IF- DATA IS UPDATED A LOT(eg: movies + reviews)
+
+3)DATA CLOSENESS(How much the data is related to each other):
+EMBED IF: DATASETS REALLY BELONG TOGETHER
+REFERENCE IF: WE FREQUENTLY NEED TO QUERY BOTH DATASETS ON THEIR OWN
+
+    ---------------------------------------------------------------------------
+
+                        TYPES OF REFERENCING
+
+1) CHILD REFERENCING: Child object is referenced inside the parent object.
+
+Cons- There can be tons of children and it would lead to same problem.
+      Parent and child are coupled together.
+
+Best used for 1:FEW.
+
+2) PARENT REFERENCING: Parent object is referred inside every child object.
+
+Pros- Parent and children are isolated.
+      One object is not burdened with all references
+
+Best used for 1:MANY and 1:TON
+
+3)TWO WAY REFERENCING: Both parents and children are referred to each other.
+
+Pros: Easy to query for both coupled and isolated data
+
+Best used for MANY:MANY 
