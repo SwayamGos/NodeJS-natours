@@ -4,6 +4,7 @@
   "description": "Learning nodejs and mongodb",
   "source": "public/js/index.js",
   "main": "public/js/bundle.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
@@ -47,7 +48,7 @@
     "xss-clean": "^0.1.4"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=10.0.0"
   },
   "devDependencies": {
     "parcel": "^2.9.3"
