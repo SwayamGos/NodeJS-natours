@@ -42,7 +42,7 @@ const $c6a88cbb7d89dfbc$export$de026b00723010c1 = (type, msg)=>{
 
 const $2182bd3af7eff4ff$export$596d806903d1f59e = async (obj)=>{
     try {
-        let res = await fetch("http://127.0.0.1:3000/api/v1/users/login", {
+        let res = await fetch("/api/v1/users/login", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -62,13 +62,13 @@ const $2182bd3af7eff4ff$export$596d806903d1f59e = async (obj)=>{
             }, 1000);
         } else throw err;
     } catch (err1) {
-        console.log("hi");
+        // console.log('hi');
         (0, $c6a88cbb7d89dfbc$export$de026b00723010c1)("error", "Please provide valid email or password");
     }
 };
 const $2182bd3af7eff4ff$export$a0973bcfe11b05c9 = async ()=>{
     try {
-        let res = await fetch("http://127.0.0.1:3000/api/v1/users/logout");
+        let res = await fetch("/api/v1/users/logout");
         console.log(res);
         if (res.status === 200) location.reload(true);
     } catch (err1) {
@@ -81,7 +81,7 @@ const $2182bd3af7eff4ff$export$a0973bcfe11b05c9 = async ()=>{
 /*eslint-disable*/ 
 const $fc2892257a9a50b3$var$jsonFormData = async (formData)=>{
     const plainFormData = Object.fromEntries(formData.entries());
-    console.log(plainFormData);
+    // console.log(plainFormData);
     return JSON.stringify(plainFormData);
 };
 const $fc2892257a9a50b3$export$f558026a994b6051 = async (data, type)=>{
@@ -96,7 +96,7 @@ const $fc2892257a9a50b3$export$f558026a994b6051 = async (data, type)=>{
         }
     };
     try {
-        let url = "http://127.0.0.1:3000/api/v1/users/";
+        let url = "/api/v1/users/";
         if (type === "password") {
             url += "updatePassword";
             options.body = JSON.stringify(dt);
@@ -106,15 +106,13 @@ const $fc2892257a9a50b3$export$f558026a994b6051 = async (data, type)=>{
             form.append("name", dt.name);
             form.append("email", dt.email);
             form.append("photo", dt.photo[0]);
-            console.log(dt.photo[0]);
+            // console.log(dt.photo[0]);
             options.body = await $fc2892257a9a50b3$var$jsonFormData(form);
-            console.log(await options.body);
+        // console.log(await options.body);
         }
         let res = await fetch(url, options);
-        if (res.status === 200) {
-            console.log("hi");
-            (0, $c6a88cbb7d89dfbc$export$de026b00723010c1)("success", `${type.toUpperCase()} updated successfully`);
-        }
+        if (res.status === 200) // console.log('hi');
+        (0, $c6a88cbb7d89dfbc$export$de026b00723010c1)("success", `${type.toUpperCase()} updated successfully`);
     } catch (err) {
         console.log("error", err);
     }
@@ -131,7 +129,7 @@ const $691131ff80032412$var$userPasswordForm = document.querySelector(".form-use
 if ($691131ff80032412$var$leaflet) {
     const locations = JSON.parse(document.getElementById("map").dataset.locations);
     (0, $96761fcf66c88173$export$4c5dd147b21b9176)(locations);
-    console.log(locations);
+// console.log(locations);
 }
 if ($691131ff80032412$var$loginForm) $691131ff80032412$var$loginForm.addEventListener("submit", (e)=>{
     e.preventDefault();

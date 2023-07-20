@@ -67,7 +67,7 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!email || !password) {
     return next(new AppError('Please provide email and password!', 400));
   }
-  console.log(email, password);
+  // console.log(email, password);
 
   // Check if user exists && password is correct
   // Password selected explicitly since it is not originally in the output
@@ -116,7 +116,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (!currUser) return next(new AppError('User no longer exists!', 401));
 
   // Check if user changed password after jwt was issued
-  console.log(currUser.changedPasswordAfter(decoded.iat));
+  // console.log(currUser.changedPasswordAfter(decoded.iat));
   if (currUser.changedPasswordAfter(decoded.iat)) {
     return next(
       new AppError('User recently changed password. Please login again!', 401)
@@ -141,7 +141,7 @@ exports.isLoggedIn = async (req, res, next) => {
       if (!currUser) return next();
 
       // Check if user changed password after jwt was issued
-      console.log(currUser.changedPasswordAfter(decoded.iat));
+      // console.log(currUser.changedPasswordAfter(decoded.iat));
       if (currUser.changedPasswordAfter(decoded.iat)) {
         return next();
       }
@@ -149,7 +149,7 @@ exports.isLoggedIn = async (req, res, next) => {
       // THERE IS A LOGGED IN USER
       // All pug templates get req.locals
       res.locals.user = currUser;
-      console.log(res.locals.user);
+      // console.log(res.locals.user);
       return next();
     } catch (err) {
       return next();

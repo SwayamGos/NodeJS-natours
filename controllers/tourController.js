@@ -81,7 +81,7 @@ exports.getTourStats = catchAsync(async (req, res, next) => {
 // Counting the no. of tours in each month of a given year
 exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
   const year = req.params.year * 1;
-  console.log(req.params);
+  // console.log(req.params);
 
   // Unwind separates the start dates, so each tour will have only one start date and tours with multiple start dates will be broken into multiple tours
   const plan = await Tour.aggregate([

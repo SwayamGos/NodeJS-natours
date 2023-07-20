@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 export const login = async (obj) => {
   try {
-    let res = await fetch('http://127.0.0.1:3000/api/v1/users/login', {
+    let res = await fetch('/api/v1/users/login', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -26,14 +26,14 @@ export const login = async (obj) => {
       throw err;
     }
   } catch (err) {
-    console.log('hi');
+    // console.log('hi');
     showAlert('error', 'Please provide valid email or password');
   }
 };
 
 export const logout = async () => {
   try {
-    let res = await fetch('http://127.0.0.1:3000/api/v1/users/logout');
+    let res = await fetch('/api/v1/users/logout');
     console.log(res);
 
     if (res.status === 200) {

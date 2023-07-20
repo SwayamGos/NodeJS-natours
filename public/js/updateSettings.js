@@ -4,7 +4,7 @@ import { showAlert } from './alert';
 
 const jsonFormData = async (formData) => {
   const plainFormData = Object.fromEntries(formData.entries());
-  console.log(plainFormData);
+  // console.log(plainFormData);
   return JSON.stringify(plainFormData);
 };
 
@@ -18,7 +18,7 @@ export const updateSettings = async (data, type) => {
     },
   };
   try {
-    let url = 'http://127.0.0.1:3000/api/v1/users/';
+    let url = '/api/v1/users/';
 
     if (type === 'password') {
       url += 'updatePassword';
@@ -29,15 +29,15 @@ export const updateSettings = async (data, type) => {
       form.append('name', dt.name);
       form.append('email', dt.email);
       form.append('photo', dt.photo[0]);
-      console.log(dt.photo[0]);
+      // console.log(dt.photo[0]);
       options.body = await jsonFormData(form);
-      console.log(await options.body);
+      // console.log(await options.body);
     }
 
     let res = await fetch(url, options);
 
     if (res.status === 200) {
-      console.log('hi');
+      // console.log('hi');
       showAlert('success', `${type.toUpperCase()} updated successfully`);
     }
   } catch (err) {

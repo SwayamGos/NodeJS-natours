@@ -18,7 +18,7 @@ if (leaflet) {
     document.getElementById('map').dataset.locations
   );
   displayMap(locations);
-  console.log(locations);
+  // console.log(locations);
 }
 
 if (loginForm) {
